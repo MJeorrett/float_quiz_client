@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import './App.css';
 
+let currentEnvironment = "LOCAL"
+if ( process.env.API_URL ) {
+  currentEnvironment = "HEROKU"
+}
+
 class App extends Component {
   render() {
     return (
-      <h1>Welcome to the Float Cash Flow Quiz</h1>
+      <div>
+        <h1>Welcome to the Float Cash Flow Quiz</h1>
+        <p>currently running on {currentEnvironment}</p>
+      </div>
     )
   }
 }
