@@ -12,6 +12,7 @@ class App extends Component {
       <div>
         <h1>Welcome to the Float Cash Flow Quiz</h1>
         <p>currently running on {currentEnvironment}</p>
+        <p>process.env:{JSON.stringify(process.env)}</p>
       </div>
     )
   }
