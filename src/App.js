@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div>
         <h1>Welcome to the Float Cash Flow Quiz</h1>
-        <p>Running in {process.env.NODE_ENV}</p>
+        <p>API_KEY: {process.env.API_KEY}</p>
       </div>
     )
   }
