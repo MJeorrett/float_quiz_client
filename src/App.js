@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import runtimeEnv from '@mars/heroku-js-runtime-env'
+
 import './App.css';
 
 class App extends Component {
   render() {
-    const env_vars = JSON.stringify( process.env )
+    const env_vars = runtimeEnv()
     return (
       <div>
         <h1>Welcome to the Float Cash Flow Quiz</h1>
@@ -13,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
