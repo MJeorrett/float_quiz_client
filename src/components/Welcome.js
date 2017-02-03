@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Welcome = () => {
+const WelcomeContainer = ({ onNextClick }) => {
   let nameInput
   return (
     <div>
@@ -10,14 +10,15 @@ const Welcome = () => {
           ref={ node => nameInput = node }
           type="text"
           placeholder="Please enter your name" />
-        <button onClick={ (ev) => {
+        <button
+          onClick={ (ev) => {
             ev.preventDefault()
-            console.log("name entered:", nameInput.value)
-          }
-        }>Next</button>
+            onNextClick( nameInput.value )
+          }}
+        >Next</button>
       </form>
     </div>
   )
 }
 
-export default Welcome
+export default WelcomeContainer
