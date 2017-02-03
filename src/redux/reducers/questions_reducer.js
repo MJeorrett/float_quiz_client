@@ -11,6 +11,11 @@ const questions_reducer = ( state=defaultState, action ) => {
       return Object.assign( {}, state, {
         isFetching: true
       })
+    case types.FETCH_QUESTIONS_SUCCESS:
+      return Object.assign( {}, state, {
+        isFetching: false,
+        questions: action.payload
+      })
     default:
       return state
   }
