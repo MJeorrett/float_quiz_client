@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 
 import { setPlayerName } from '../redux/actions/game_state_actions'
 
@@ -16,7 +17,10 @@ class WelcomeContainer extends React.Component {
 const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => {
   return {
-    setUserName: name => dispatch( setPlayerName(name) )
+    setUserName: name => {
+      dispatch( setPlayerName(name) )
+      browserHistory.push('questions/1')
+    }
   }
 }
 

@@ -7,6 +7,7 @@ import root_reducer from './redux/reducers'
 
 import Main from './Main'
 import WelcomeContainer from './containers/WelcomeContainer'
+import QuestionContainer from './containers/QuestionContainer'
 import './App.css';
 
 const store = createStore( root_reducer )
@@ -18,6 +19,7 @@ class App extends Component {
         <Router history={ browserHistory }>
           <Route path="/" component={ Main }>
             <IndexRoute component={ WelcomeContainer }/>
+            <Route path="questions/:id" component={ QuestionContainer } />
           </Route>
         </Router>
       </Provider>
