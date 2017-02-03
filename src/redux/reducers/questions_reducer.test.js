@@ -11,7 +11,7 @@ it('should return initial state', () => {
   })
 })
 
-it('should handle fetch questions started', () => {
+it('should handle FETCH_QUESTIONS_STARTED action', () => {
   const oldState = {
     isFetching: false,
     questions: []
@@ -24,7 +24,7 @@ it('should handle fetch questions started', () => {
   })
 })
 
-it('should handle fetch questions success', () => {
+it('should handle FETCH_QUESTIONS_SUCCESS action', () => {
   const oldState = {
     isFetching: true,
     questions: []

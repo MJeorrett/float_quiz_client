@@ -9,7 +9,7 @@ it('should return default state', () => {
   })
 })
 
-it('should be able to set player name', () => {
+it('should handle SET_PLAYER_NAME action', () => {
   const oldState = {
     player_name: "old player name"
   }
