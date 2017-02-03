@@ -7,22 +7,19 @@ it('should return initial state', () => {
     questions_reducer( undefined, {} )
   ).toEqual({
     isFetching: false,
-    questions: {},
-    questionIds: []
+    questions: []
   })
 })
 
 it('should handle fetch questions started', () => {
   const oldState = {
     isFetching: false,
-    questions: { q1: "something" },
-    questionIds: [ 'q1' ]
+    questions: []
   }
   expect(
     questions_reducer( oldState, fetchQuestionsStarted() )
   ).toEqual({
     isFetching: true,
-    questions: { q1: "something" },
-    questionIds: [ 'q1' ]
+    questions: []
   })
 })

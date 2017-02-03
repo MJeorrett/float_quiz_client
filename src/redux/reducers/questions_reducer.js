@@ -2,8 +2,7 @@ import * as types from '../actions/types'
 
 const defaultState = {
   isFetching: false,
-  questions: {},
-  questionIds: []
+  questions: []
 }
 
 const questions_reducer = ( state=defaultState, action ) => {
