@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunkMiddleware from 'redux-thunk'
 
 import root_reducer from './redux/reducers'
 
@@ -10,7 +11,12 @@ import WelcomeContainer from './containers/WelcomeContainer'
 import QuestionContainer from './containers/QuestionContainer'
 import './App.css';
 
-const store = createStore( root_reducer )
+const store = createStore(
+  root_reducer,
+  applyMiddleware(
+    thunkMiddleware
+  )
+)
 
 class App extends Component {
   render() {

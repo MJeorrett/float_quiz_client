@@ -1,18 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { fetchQuestions } from '../redux/actions/questions_actions'
+
 class QuestionContainer extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchQuestions()
+  }
+
   render() {
-    return <p>taking the quiz as {this.props.player_name}</p>
+    return (
+      <div>
+        <p>taking the quiz as {this.props.player_name}</p>
+        <p>{ JSON.stringify( this.props.questions ) }</p>
+      </div>
+    )
   }
 
 }
 
-const mapStateToProps = state => state.game_state
+const mapStateToProps = state => {
+  return {
+    game_state: state.game_state,
+    questions: state.questions.questions
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchQuestions: () => dispatch( fetchQuestions() )
+  }
+}
 
 QuestionContainer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(QuestionContainer)
 
 export default QuestionContainer
