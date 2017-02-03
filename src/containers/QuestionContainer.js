@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchQuestions } from '../redux/actions/questions_actions'
+import { nextQuestion } from '../redux/actions/game_state_actions'
 
 import Question from '../components/Question'
 
@@ -21,6 +22,8 @@ class QuestionContainer extends React.Component {
       <div>
         <p>taking the quiz as {this.props.player_name}</p>
         { content }
+        <hr />
+        <button onClick={ this.props.nextQuestion }>Next</button>
       </div>
     )
   }
@@ -28,12 +31,14 @@ class QuestionContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+
+  const currentQuestionNo = state.game_state.current_question_no
   const questions = state.questions.questions
   const noOfQuestions = questions.length
-  const currentQuestionNo = parseInt( ownProps.params.question_no, 10 )
 
   return {
     player_name: state.game_state.player_name,
+    currentQuestionNo: currentQuestionNo,
     currentQuestion: questions[currentQuestionNo - 1],
     onLastQuestion: noOfQuestions === currentQuestionNo
   }
@@ -41,7 +46,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchQuestions: () => dispatch( fetchQuestions() )
+    fetchQuestions: () => dispatch( fetchQuestions() ),
+    nextQuestion: () => dispatch( nextQuestion() )
   }
 }
 

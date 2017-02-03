@@ -25,7 +25,7 @@ class App extends Component {
         <Router history={ browserHistory }>
           <Route path="/" component={ Main }>
             <IndexRoute component={ WelcomeContainer }/>
-            <Route path="questions/:question_no" component={ QuestionContainer } />
+            <Route path="questions" component={ QuestionContainer } />
           </Route>
         </Router>
       </Provider>

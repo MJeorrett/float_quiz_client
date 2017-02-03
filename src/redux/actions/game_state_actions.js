@@ -6,3 +6,9 @@ export function setPlayerName( name ) {
     payload: name
   }
 }
+
+export function nextQuestion( name ) {
+  return {
+    type: types.NEXT_QUESTION
+  }
+}

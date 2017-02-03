@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setUserName: name => {
       dispatch( setPlayerName(name) )
-      browserHistory.push('questions/1')
+      browserHistory.push('questions')
     }
   }
 }
