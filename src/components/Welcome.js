@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const WelcomeContainer = ({ onNextClick }) => {
   let nameInput
@@ -19,6 +19,10 @@ const WelcomeContainer = ({ onNextClick }) => {
       </form>
     </div>
   )
+}
+
+WelcomeContainer.propTypes = {
+  onNextClick: PropTypes.func.isRequired
 }
 
 export default WelcomeContainer
