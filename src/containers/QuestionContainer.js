@@ -22,7 +22,7 @@ class QuestionContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    game_state: state.game_state,
+    player_name: state.game_state.player_name,
     questions: state.questions.questions
   }
 }
