@@ -2,7 +2,7 @@ import * as types from '../actions/types'
 
 const defaultState = {
   player_name: "",
-  current_question_no: 1
+  current_question_index: 0
 }
 
 const game_state_reducer = ( state = defaultState, action ) => {
@@ -13,7 +13,7 @@ const game_state_reducer = ( state = defaultState, action ) => {
       })
     case types.NEXT_QUESTION:
       return Object.assign( {}, state, {
-        current_question_no: state.current_question_no + 1
+        current_question_index: state.current_question_index + 1
       })
     default:
       return state

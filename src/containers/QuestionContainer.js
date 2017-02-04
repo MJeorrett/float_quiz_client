@@ -31,16 +31,14 @@ class QuestionContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-
-  const currentQuestionNo = state.game_state.current_question_no
   const questions = state.questions.questions
-  const noOfQuestions = questions.length
+  const currentQuestionIndex = state.game_state.current_question_index
+  const lastQuestionIndex = questions.length - 1
 
   return {
     player_name: state.game_state.player_name,
-    currentQuestionNo: currentQuestionNo,
-    currentQuestion: questions[currentQuestionNo - 1],
-    onLastQuestion: noOfQuestions === currentQuestionNo
+    currentQuestion: questions[currentQuestionIndex],
+    onLastQuestion: currentQuestionIndex === lastQuestionIndex
   }
 }
 
