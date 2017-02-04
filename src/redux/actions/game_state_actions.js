@@ -12,3 +12,10 @@ export function nextQuestion( name ) {
     type: types.NEXT_QUESTION
   }
 }
+
+export function setSelectedAnswerScore( score ) {
+  return {
+    type: types.SET_SELECTED_ANSWER_SCORE,
+    payload: score
+  }
+}
