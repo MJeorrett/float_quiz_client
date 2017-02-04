@@ -13,6 +13,10 @@ const game_state_reducer = ( state = defaultState, action ) => {
       return Object.assign( {}, state, {
         player_name: action.payload
       })
+    case types.SET_SELECTED_ANSWER_SCORE:
+      return Object.assign( {}, state, {
+        selected_answer_score: action.payload
+      })
     case types.NEXT_QUESTION:
       return Object.assign( {}, state, {
         current_question_index: state.current_question_index + 1,

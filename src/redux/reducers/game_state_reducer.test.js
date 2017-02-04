@@ -29,6 +29,23 @@ it('should handle SET_PLAYER_NAME action', () => {
   })
 })
 
+it('should handle SET_SELECTED_ANSWER_SCORE', () => {
+  const oldState = {
+    player_name: "player name",
+    current_question_index: 4,
+    total_score: 20,
+    selected_answer_score: null
+  }
+  expect(
+    game_state_reducer( oldState, setSelectedAnswerScore( 15 ) )
+  ).toEqual({
+    player_name: "player name",
+    current_question_index: 4,
+    total_score: 20,
+    selected_answer_score: 15
+  })
+})
+
 it('should handle NEXT_QUESTION action', () => {
   const oldState = {
     player_name: "David Bowie",
