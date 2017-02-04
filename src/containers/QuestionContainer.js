@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 
 import { fetchQuestions } from '../redux/actions/questions_actions'
 import { nextQuestion } from '../redux/actions/game_state_actions'
@@ -8,8 +9,22 @@ import Question from '../components/Question'
 
 class QuestionContainer extends React.Component {
 
+  constructor() {
+    super()
+    this.handleNextClicked = this.handleNextClicked.bind( this )
+  }
+
   componentDidMount() {
     this.props.fetchQuestions()
+  }
+
+  handleNextClicked() {
+    if ( this.props.onLastQuestion ) {
+      browserHistory.push( 'results' )
+    }
+    else {
+      this.props.nextQuestion()
+    }
   }
 
   render() {
@@ -23,7 +38,7 @@ class QuestionContainer extends React.Component {
         <p>taking the quiz as {this.props.player_name}</p>
         { content }
         <hr />
-        <button onClick={ this.props.nextQuestion }>Next</button>
+        <button onClick={ this.handleNextClicked }>Next</button>
       </div>
     )
   }
