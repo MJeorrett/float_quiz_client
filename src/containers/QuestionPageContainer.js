@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
 import { fetchQuestions } from '../redux/actions/questions_actions'
-import { nextQuestion, setSelectedAnswerIndex } from '../redux/actions/game_state_actions'
+import { setSelectedAnswerIndex, incrementTotalScore, nextQuestion } from '../redux/actions/game_state_actions'
 
 import Question from '../components/Question'
 
@@ -23,6 +23,7 @@ class QuestionPageContainer extends React.Component {
       browserHistory.push( 'results' )
     }
     else {
+      this.props.incrementTotalScore( this.props.selectedAnswerScore )
       this.props.nextQuestion()
     }
   }
@@ -49,6 +50,7 @@ class QuestionPageContainer extends React.Component {
           disabled={ this.props.selectedAnswerIndex === null }>
           Next
         </button>
+        <p>Current score:{this.props.totalScore}</p>
       </div>
     )
   }
@@ -58,12 +60,20 @@ class QuestionPageContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const questions = state.questions.questions
   const currentQuestionIndex = state.game_state.current_question_index
+  const currentQuestion = questions[currentQuestionIndex]
   const lastQuestionIndex = questions.length - 1
+  const selectedAnswerIndex = state.game_state.selected_answer_index
+  let selectedAnswerScore = null
+  if ( selectedAnswerIndex !== null) {
+    selectedAnswerScore = currentQuestion.answers[selectedAnswerIndex].score
+  }
 
   return {
     player_name: state.game_state.player_name,
-    currentQuestion: questions[currentQuestionIndex],
-    selectedAnswerIndex: state.game_state.selected_answer_index,
+    currentQuestion,
+    selectedAnswerIndex,
+    selectedAnswerScore,
+    totalScore: state.game_state.total_score,
     onLastQuestion: currentQuestionIndex === lastQuestionIndex
   }
 }
@@ -71,8 +81,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchQuestions: () => dispatch( fetchQuestions() ),
-    nextQuestion: () => dispatch( nextQuestion() ),
-    setSelectedAnswerIndex: index => dispatch( setSelectedAnswerIndex(index) )
+    setSelectedAnswerIndex: index => dispatch( setSelectedAnswerIndex(index) ),
+    incrementTotalScore: score => dispatch( incrementTotalScore(score) ),
+    nextQuestion: () => dispatch( nextQuestion() )
   }
 }
 
