@@ -9,16 +9,11 @@ import Question from '../components/Question'
 
 class QuestionPageContainer extends React.Component {
 
-  constructor() {
-    super()
-    this.handleNextClicked = this.handleNextClicked.bind( this )
-  }
-
   componentDidMount() {
     this.props.fetchQuestions()
   }
 
-  handleNextClicked() {
+  handleNextClicked = () => {
     if ( this.props.onLastQuestion ) {
       browserHistory.push( 'results' )
     }
