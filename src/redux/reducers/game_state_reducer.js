@@ -17,9 +17,9 @@ const game_state_reducer = ( state = defaultState, action ) => {
       return Object.assign( {}, state, {
         selected_answer_index: action.payload
       })
-    case types.INCREMENT_TOTAL_SCORE:
+    case types.SET_TOTAL_SCORE:
       return Object.assign( {}, state, {
-        total_score: state.total_score + action.payload
+        total_score: action.payload
       })
     case types.SET_CURRENT_QUESTION_INDEX:
       return Object.assign( {}, state, {

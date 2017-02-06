@@ -21,10 +21,17 @@ export function nextQuestion( name ) {
   }
 }
 
-export function incrementTotalScore( amount ) {
+export function setTotalScore( score ) {
   return {
-    type: types.INCREMENT_TOTAL_SCORE,
-    payload: amount
+    type: types.SET_TOTAL_SCORE,
+    payload: score
+  }
+}
+
+export function incrementTotalScore( amount ) {
+  return function( dispatch, getState ) {
+    const newTotalScore = getState().game_state.total_score + amount
+    return dispatch( setTotalScore(newTotalScore) )
   }
 }
 
