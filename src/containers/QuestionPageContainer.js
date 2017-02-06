@@ -14,11 +14,12 @@ class QuestionPageContainer extends React.Component {
   }
 
   handleNextClicked = () => {
+    this.props.incrementTotalScore( this.props.selectedAnswerScore )
+    
     if ( this.props.onLastQuestion ) {
       browserHistory.push( 'results' )
     }
     else {
-      this.props.incrementTotalScore( this.props.selectedAnswerScore )
       this.props.nextQuestion()
     }
   }
