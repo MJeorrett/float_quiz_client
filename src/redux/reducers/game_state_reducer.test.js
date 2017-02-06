@@ -1,4 +1,10 @@
-import { setPlayerName, setSelectedAnswerIndex, incrementTotalScore, nextQuestion } from '../actions/game_state_actions'
+import {
+  setPlayerName,
+  setSelectedAnswerIndex,
+  incrementTotalScore,
+  setCurrentQuestionIndex
+} from '../actions/game_state_actions'
+
 import game_state_reducer from './game_state_reducer'
 
 it('should return default state', () => {
@@ -63,7 +69,7 @@ it('should handle INCREMENT_TOTAL_SCORE', () => {
   })
 })
 
-it('should handle NEXT_QUESTION action', () => {
+it('should handle SET_CURRENT_QUESTION_INDEX', () => {
   const oldState = {
     player_name: "David Bowie",
     current_question_index: 3,
@@ -71,7 +77,7 @@ it('should handle NEXT_QUESTION action', () => {
     selected_answer_index: 2
   }
   expect(
-    game_state_reducer( oldState, nextQuestion() )
+    game_state_reducer( oldState, setCurrentQuestionIndex(4) )
   ).toEqual({
     player_name: "David Bowie",
     current_question_index: 4,

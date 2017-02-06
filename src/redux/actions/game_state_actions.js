@@ -7,9 +7,17 @@ export function setPlayerName( name ) {
   }
 }
 
-export function nextQuestion( name ) {
+export function setCurrentQuestionIndex( index ) {
   return {
-    type: types.NEXT_QUESTION
+    type: types.SET_CURRENT_QUESTION_INDEX,
+    payload: index
+  }
+}
+
+export function nextQuestion( name ) {
+  return function( dispatch, getState ) {
+    const nextQIndex = getState().game_state.current_question_index + 1
+    return dispatch( setCurrentQuestionIndex(nextQIndex) )
   }
 }
 
