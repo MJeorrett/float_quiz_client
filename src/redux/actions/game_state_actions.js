@@ -1,8 +1,9 @@
 import * as types from './types'
 import * as keys from './local_storage_keys'
+import lsHelper from '../helpers/localStorageHelper'
 
 export function setPlayerName( name ) {
-  localStorage.setItem( keys.PLAYER_NAME, name )
+  lsHelper.setItem( keys.PLAYER_NAME, name )
   return {
     type: types.SET_PLAYER_NAME,
     payload: name
@@ -10,7 +11,7 @@ export function setPlayerName( name ) {
 }
 
 export function setCurrentQuestionIndex( index ) {
-  localStorage.setItem( keys.CURRENT_QUESTION_INDEX, index )
+  lsHelper.setItem( keys.CURRENT_QUESTION_INDEX, index )
   return {
     type: types.SET_CURRENT_QUESTION_INDEX,
     payload: index
@@ -25,7 +26,7 @@ export function nextQuestion( name ) {
 }
 
 export function setTotalScore( score ) {
-  localStorage.setItem( keys.TOTAL_SCORE, score )
+  lsHelper.setItem( keys.TOTAL_SCORE, score )
   return {
     type: types.SET_TOTAL_SCORE,
     payload: score
@@ -47,7 +48,7 @@ export function setSelectedAnswerIndex( index ) {
 }
 
 export function setIsFinished( isFinished ) {
-  localStorage.setItem( keys.IS_FINISHED, isFinished )
+  lsHelper.setItem( keys.IS_FINISHED, isFinished )
   return {
     type: types.SET_IS_FINISHED,
     payload: isFinished
@@ -56,14 +57,16 @@ export function setIsFinished( isFinished ) {
 
 export function loadGameStateIfAny() {
   return function( dispatch ) {
-    const playerName = localStorage.getItem(keys.PLAYER_NAME)
+
+    const playerName = lsHelper.getItem(keys.PLAYER_NAME)
     const currentQuestionIndex =
-      localStorage.getItem( keys.CURRENT_QUESTION_INDEX )
-    const totalScore = localStorage.getItem( keys.TOTAL_SCORE )
-    if ( playerName ) dispatch( setPlayerName( playerName ) )
+      lsHelper.getItem( keys.CURRENT_QUESTION_INDEX )
+    const totalScore = lsHelper.getItem( keys.TOTAL_SCORE )
+
+    if ( playerName ) dispatch( setPlayerName(playerName) )
     if ( currentQuestionIndex ) {
-      dispatch( setCurrentQuestionIndex( parseInt(currentQuestionIndex, 10) ) )
+      dispatch( setCurrentQuestionIndex(currentQuestionIndex) )
     }
-    if ( totalScore ) dispatch( setTotalScore( parseInt(totalScore, 10) ) )
+    if ( totalScore ) dispatch( setTotalScore(totalScore) )
   }
 }
