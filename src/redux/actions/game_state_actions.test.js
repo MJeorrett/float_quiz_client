@@ -4,15 +4,7 @@ import configureMockStore from 'redux-mock-store'
 import lsHelper from '../helpers/localStorageHelper'
 import * as types from './types'
 import * as keys from './local_storage_keys'
-import {
-  setPlayerName,
-  setCurrentQuestionIndex,
-  setTotalScore,
-  nextQuestion,
-  loadGameStateIfAny,
-  setIsFinished,
-  resetGameState
-} from './game_state_actions'
+import * as actions from './game_state_actions'
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
@@ -24,28 +16,28 @@ describe('nextQuestion', () => {
   })
 
   it('should save player name in local storage', () => {
-    setPlayerName( "test name" )
+    actions.setPlayerName( "test name" )
     expect(
       lsHelper.getItem( keys.PLAYER_NAME )
     ).toEqual( "test name" )
   })
 
   it('should save current question index in local storage', () => {
-    setCurrentQuestionIndex( 2 )
+    actions.setCurrentQuestionIndex( 2 )
     expect(
       lsHelper.getItem( keys.CURRENT_QUESTION_INDEX )
     ).toEqual( 2 )
   })
 
   it('should save total score', () => {
-    setTotalScore( 25 )
+    actions.setTotalScore( 25 )
     expect(
       lsHelper.getItem( keys.TOTAL_SCORE )
     ).toEqual( 25 )
   })
 
   it('should save isFinished', () => {
-    setIsFinished( true )
+    actions.setIsFinished( true )
     expect(
       lsHelper.getItem( keys.IS_FINISHED )
     ).toEqual( true )
@@ -58,7 +50,7 @@ describe('nextQuestion', () => {
       }
     })
 
-    store.dispatch( nextQuestion() )
+    store.dispatch( actions.nextQuestion() )
     expect(
       store.getActions()
     ).toEqual([
@@ -82,7 +74,7 @@ describe('nextQuestion', () => {
     const store = mockStore({
       game_state: {}
     })
-    store.dispatch( loadGameStateIfAny() )
+    store.dispatch( actions.loadGameStateIfAny() )
     expect( store.getActions() ).toEqual( expectedActions )
   })
 
@@ -96,7 +88,7 @@ describe('nextQuestion', () => {
     const store = mockStore({
       game_state: {}
     })
-    store.dispatch( resetGameState() )
+    store.dispatch( actions.resetGameState() )
     expect( store.getActions() ).toEqual( expectedActions )
   })
 
@@ -105,7 +97,7 @@ describe('nextQuestion', () => {
     const store = mockStore({
       game_state: {}
     })
-    store.dispatch( loadGameStateIfAny() )
+    store.dispatch( actions.loadGameStateIfAny() )
     expect( store.getActions() ).toEqual( [] )
   })
 })
