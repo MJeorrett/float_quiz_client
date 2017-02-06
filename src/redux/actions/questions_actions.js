@@ -8,9 +8,14 @@ export function fetchQuestionsStarted() {
 }
 
 export function fetchQuestionsSuccess( questions ) {
+  const scoreValues = questions[0].answers.map( answer => answer.score )
+  const maxScoreValue = Math.max(...scoreValues)
   return {
     type: types.FETCH_QUESTIONS_SUCCESS,
-    payload: questions
+    payload: {
+      questions,
+      max_score: maxScoreValue * questions.length
+    }
   }
 }
 
