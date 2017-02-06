@@ -7,7 +7,8 @@ import {
   setPlayerName,
   setCurrentQuestionIndex,
   setTotalScore,
-  nextQuestion
+  nextQuestion,
+  loadGameStateIfAny
 } from './game_state_actions'
 
 const middlewares = [ thunk ]
@@ -53,5 +54,23 @@ describe('nextQuestion', () => {
     ).toEqual([
       { type: types.SET_CURRENT_QUESTION_INDEX, payload: 3 }
     ])
+  })
+
+  it('should loadGameStateIfAny', () => {
+    localStorage.setItem( keys.PLAYER_NAME, "test name" )
+    localStorage.setItem( keys.CURRENT_QUESTION_INDEX, 13 )
+    localStorage.setItem( keys.TOTAL_SCORE, 45 )
+
+    const expectedActions = [
+      { type: types.SET_PLAYER_NAME, payload: "test name" },
+      { type: types.SET_CURRENT_QUESTION_INDEX, payload: 13 },
+      { type: types.SET_TOTAL_SCORE, payload: 45 }
+    ]
+
+    const store = mockStore({
+      game_state: {}
+    })
+    store.dispatch( loadGameStateIfAny() )
+    expect( store.getActions() ).toEqual( expectedActions )
   })
 })

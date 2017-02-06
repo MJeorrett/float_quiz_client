@@ -45,3 +45,17 @@ export function setSelectedAnswerIndex( index ) {
     payload: index
   }
 }
+
+export function loadGameStateIfAny() {
+  return function( dispatch ) {
+    const playerName = localStorage.getItem(keys.PLAYER_NAME)
+    if ( playerName ) {
+      const currentQuestionIndex =
+        localStorage.getItem( keys.CURRENT_QUESTION_INDEX )
+      const totalScore = localStorage.getItem( keys.TOTAL_SCORE )
+      dispatch( setPlayerName( playerName ) )
+      dispatch( setCurrentQuestionIndex( parseInt(currentQuestionIndex, 10) ) )
+      dispatch( setTotalScore( parseInt(totalScore, 10) ) )
+    }
+  }
+}
