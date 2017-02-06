@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
 
 import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import { setPlayerName } from '../redux/actions/game_state_actions'
@@ -20,12 +19,12 @@ class WelcomePageContainer extends React.Component {
 }
 
 const mapStateToProps = state => state
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchQuestions: () => dispatch( fetchQuestionsIfNeeded() ),
     setUserName: name => {
       dispatch( setPlayerName(name) )
-      browserHistory.push('questions')
+      props.router.push('questions')
     }
   }
 }
