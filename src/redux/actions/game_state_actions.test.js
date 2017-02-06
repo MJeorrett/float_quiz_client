@@ -7,17 +7,19 @@ import { nextQuestion } from './game_state_actions'
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
-it('should create SET_CURRENT_QUESTION_INDEX from nextQuestion', () => {
-  const store = mockStore({
-    game_state: {
-      current_question_index: 2
-    }
-  })
+describe('nextQuestion', () => {
+  it('should create SET_CURRENT_QUESTION_INDEX', () => {
+    const store = mockStore({
+      game_state: {
+        current_question_index: 2
+      }
+    })
 
-  store.dispatch( nextQuestion() )
-  expect(
-    store.getActions()
-  ).toEqual([
-    { type: types.SET_CURRENT_QUESTION_INDEX, payload: 3 }
-  ])
+    store.dispatch( nextQuestion() )
+    expect(
+      store.getActions()
+    ).toEqual([
+      { type: types.SET_CURRENT_QUESTION_INDEX, payload: 3 }
+    ])
+  })
 })
