@@ -13,6 +13,13 @@ export function nextQuestion( name ) {
   }
 }
 
+export function incrementTotalScore( amount ) {
+  return {
+    type: types.INCREMENT_TOTAL_SCORE,
+    payload: amount
+  }
+}
+
 export function setSelectedAnswerIndex( index ) {
   return {
     type: types.SET_SELECTED_ANSWER_INDEX,
