@@ -6,7 +6,7 @@ it('should return initial state', () => {
   expect(
     questions_reducer( undefined, {} )
   ).toEqual({
-    isFetching: false,
+    is_fetching: false,
     all: [],
     max_score: null
   })
@@ -14,14 +14,14 @@ it('should return initial state', () => {
 
 it('should handle FETCH_QUESTIONS_STARTED action', () => {
   const oldState = {
-    isFetching: false,
+    is_fetching: false,
     all: [],
     max_score: null
   }
   expect(
     questions_reducer( oldState, fetchQuestionsStarted() )
   ).toEqual({
-    isFetching: true,
+    is_fetching: true,
     all: [],
     max_score: null
   })
@@ -29,7 +29,7 @@ it('should handle FETCH_QUESTIONS_STARTED action', () => {
 
 it('should handle FETCH_QUESTIONS_SUCCESS action', () => {
   const oldState = {
-    isFetching: true,
+    is_fetching: true,
     all: [],
     max_score: null
   }
@@ -53,7 +53,7 @@ it('should handle FETCH_QUESTIONS_SUCCESS action', () => {
   expect(
     questions_reducer( oldState, fetchQuestionsSuccess(questions) )
   ).toEqual({
-    isFetching: false,
+    is_fetching: false,
     all: questions,
     max_score: 60
   })

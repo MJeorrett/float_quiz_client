@@ -1,7 +1,7 @@
 import * as types from '../actions/types'
 
 const defaultState = {
-  isFetching: false,
+  is_fetching: false,
   all: [],
   max_score: null
 }
@@ -10,11 +10,11 @@ const questions_reducer = ( state=defaultState, action ) => {
   switch ( action.type ) {
     case types.FETCH_QUESTIONS_STARTED:
       return Object.assign( {}, state, {
-        isFetching: true
+        is_fetching: true
       })
     case types.FETCH_QUESTIONS_SUCCESS:
       return Object.assign( {}, state, {
-        isFetching: false,
+        is_fetching: false,
         all: action.payload.questions,
         max_score: action.payload.max_score
       })
