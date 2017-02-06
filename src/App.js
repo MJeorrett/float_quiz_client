@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import root_reducer from './redux/reducers'
 
-import Main from './Main'
+import Main from './containers/Main'
 import WelcomePageContainer from './containers/WelcomePageContainer'
 import QuestionPageContainer from './containers/QuestionPageContainer'
 import ResultsPageContainer from './containers/ResultsPageContainer'
