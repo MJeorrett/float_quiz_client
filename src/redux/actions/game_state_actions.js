@@ -72,3 +72,11 @@ export function loadGameStateIfAny() {
     if ( isFinished ) dispatch( setIsFinished(isFinished) )
   }
 }
+
+export function resetGameState() {
+  return function( dispatch ) {
+    dispatch( setCurrentQuestionIndex(0) )
+    dispatch( setTotalScore(0) )
+    dispatch( setIsFinished(false) )
+  }
+}

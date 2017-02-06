@@ -10,7 +10,8 @@ import {
   setTotalScore,
   nextQuestion,
   loadGameStateIfAny,
-  setIsFinished
+  setIsFinished,
+  resetGameState
 } from './game_state_actions'
 
 const middlewares = [ thunk ]
@@ -82,6 +83,20 @@ describe('nextQuestion', () => {
       game_state: {}
     })
     store.dispatch( loadGameStateIfAny() )
+    expect( store.getActions() ).toEqual( expectedActions )
+  })
+
+  it('should clear progress', () => {
+    const expectedActions = [
+      { type: types.SET_CURRENT_QUESTION_INDEX, payload: 0 },
+      { type: types.SET_TOTAL_SCORE, payload: 0 },
+      { type: types.SET_IS_FINISHED, payload: false }
+    ]
+
+    const store = mockStore({
+      game_state: {}
+    })
+    store.dispatch( resetGameState() )
     expect( store.getActions() ).toEqual( expectedActions )
   })
 
