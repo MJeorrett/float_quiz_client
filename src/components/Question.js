@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import Answer from './Answer'
 
@@ -25,6 +25,20 @@ const Question = ({ questionData, selectedAnswerIndex, onAnswerSelect }) => {
     </div>
   )
 
+}
+
+const answerPropType = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired
+})
+
+Question.propTypes = {
+  questionData: PropTypes.shape({
+    text: PropTypes.string,
+    answers: PropTypes.arrayOf(answerPropType).isRequired
+  }).isRequired,
+  selectedAnswerIndex: PropTypes.number,
+  onAnswerSelect: PropTypes.func.isRequired
 }
 
 export default Question
