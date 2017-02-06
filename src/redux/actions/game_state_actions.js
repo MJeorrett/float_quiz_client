@@ -46,6 +46,13 @@ export function setSelectedAnswerIndex( index ) {
   }
 }
 
+export function setIsFinished( isFinished ) {
+  return {
+    type: types.SET_IS_FINISHED,
+    payload: isFinished
+  }
+}
+
 export function loadGameStateIfAny() {
   return function( dispatch ) {
     const playerName = localStorage.getItem(keys.PLAYER_NAME)

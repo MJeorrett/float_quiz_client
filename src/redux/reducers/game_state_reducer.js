@@ -4,7 +4,8 @@ const defaultState = {
   player_name: "",
   current_question_index: 0,
   total_score: 0,
-  selected_answer_index: null
+  selected_answer_index: null,
+  isFinished: false
 }
 
 const game_state_reducer = ( state = defaultState, action ) => {
@@ -25,6 +26,10 @@ const game_state_reducer = ( state = defaultState, action ) => {
       return Object.assign( {}, state, {
         current_question_index: action.payload,
         selected_answer_index: null
+      })
+    case types.SET_IS_FINISHED:
+      return Object.assign( {}, state, {
+        isFinished: action.payload
       })
     default:
       return state
