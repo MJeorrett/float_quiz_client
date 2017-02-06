@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
 
 import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import {
@@ -23,7 +22,7 @@ class QuestionPageContainer extends React.Component {
 
     if ( this.props.onLastQuestion ) {
       this.props.setFinished()
-      browserHistory.push( 'results' )
+      this.props.router.push( 'results' )
     }
     else {
       this.props.nextQuestion()
