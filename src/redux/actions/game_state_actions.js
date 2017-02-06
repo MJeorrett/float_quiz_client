@@ -1,6 +1,11 @@
 import * as types from './types'
 
+const PLAYER_NAME_KEY = 'playerName'
+const CURRENT_QUESTION_INDEX_KEY = 'currentQuestionIndex'
+const TOTAL_SCORE_KEY = 'totalScoreKey'
+
 export function setPlayerName( name ) {
+  localStorage.setItem( PLAYER_NAME_KEY, name )
   return {
     type: types.SET_PLAYER_NAME,
     payload: name
@@ -8,6 +13,7 @@ export function setPlayerName( name ) {
 }
 
 export function setCurrentQuestionIndex( index ) {
+  localStorage.setItem( CURRENT_QUESTION_INDEX_KEY, index )
   return {
     type: types.SET_CURRENT_QUESTION_INDEX,
     payload: index
@@ -22,6 +28,7 @@ export function nextQuestion( name ) {
 }
 
 export function setTotalScore( score ) {
+  localStorage.setItem( TOTAL_SCORE_KEY, score )
   return {
     type: types.SET_TOTAL_SCORE,
     payload: score
