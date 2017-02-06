@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
-import { fetchQuestions } from '../redux/actions/questions_actions'
+import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import { setSelectedAnswerIndex, incrementTotalScore, nextQuestion } from '../redux/actions/game_state_actions'
 
 import Question from '../components/Question'
@@ -15,7 +15,7 @@ class QuestionPageContainer extends React.Component {
 
   handleNextClicked = () => {
     this.props.incrementTotalScore( this.props.selectedAnswerScore )
-    
+
     if ( this.props.onLastQuestion ) {
       browserHistory.push( 'results' )
     }
@@ -76,7 +76,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchQuestions: () => dispatch( fetchQuestions() ),
+    fetchQuestions: () => dispatch( fetchQuestionsIfNeeded() ),
     setSelectedAnswerIndex: index => dispatch( setSelectedAnswerIndex(index) ),
     incrementTotalScore: score => dispatch( incrementTotalScore(score) ),
     nextQuestion: () => dispatch( nextQuestion() )

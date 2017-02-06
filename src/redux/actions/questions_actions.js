@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 import * as types from './types'
 import config from '../../config'
 
@@ -19,11 +21,22 @@ export function fetchQuestionsSuccess( questions ) {
   }
 }
 
-export function fetchQuestions() {
+function fetchQuestions() {
   return function ( dispatch ) {
     dispatch( fetchQuestionsStarted() )
     return fetch( config.api_url )
       .then( res => res.json() )
       .then( json => dispatch( fetchQuestionsSuccess( json ) ) )
+  }
+}
+
+export function fetchQuestionsIfNeeded() {
+  return function ( dispatch, getState ) {
+    if ( getState().questions.questions.length === 0 ) {
+      return dispatch( fetchQuestions() )
+    }
+    else {
+      return Promise.resolve()
+    }
   }
 }
