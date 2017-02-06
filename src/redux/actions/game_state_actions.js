@@ -47,6 +47,7 @@ export function setSelectedAnswerIndex( index ) {
 }
 
 export function setIsFinished( isFinished ) {
+  localStorage.setItem( keys.IS_FINISHED, isFinished )
   return {
     type: types.SET_IS_FINISHED,
     payload: isFinished

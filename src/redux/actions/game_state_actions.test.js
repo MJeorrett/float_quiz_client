@@ -8,7 +8,8 @@ import {
   setCurrentQuestionIndex,
   setTotalScore,
   nextQuestion,
-  loadGameStateIfAny
+  loadGameStateIfAny,
+  setIsFinished
 } from './game_state_actions'
 
 const middlewares = [ thunk ]
@@ -39,6 +40,13 @@ describe('nextQuestion', () => {
     expect(
       localStorage.getItem( keys.TOTAL_SCORE )
     ).toEqual( "25" )
+  })
+
+  it('should save isFinished', () => {
+    setIsFinished( true )
+    expect(
+      localStorage.getItem( keys.IS_FINISHED )
+    ).toEqual( "true" )
   })
 
   it('should create SET_CURRENT_QUESTION_INDEX from nextQuestion call', () => {
