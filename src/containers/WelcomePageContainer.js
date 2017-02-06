@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
-import { setPlayerName } from '../redux/actions/game_state_actions'
+import { setPlayerName, setCurrentQuestionIndex } from '../redux/actions/game_state_actions'
+import { getPlayerName } from '../selectors'
 
 import Welcome from '../components/Welcome'
 
@@ -12,20 +13,28 @@ class WelcomePageContainer extends React.Component {
     this.props.fetchQuestions()
   }
 
+  handleNextClicked = () => {
+    this.props.resetCurrentQuestionIndex()
+    this.props.router.push('questions')
+  }
+
   render() {
-    return <Welcome onNextClick={ this.props.setUserName }/>
+    return <Welcome
+      playerName={ this.props.playerName }
+      onPlayerNameChange={ this.props.setPlayerName }
+      onNextClick={ this.handleNextClicked }/>
   }
 
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = state => {
+  return { playerName: getPlayerName(state) }
+}
 const mapDispatchToProps = (dispatch, props) => {
   return {
     fetchQuestions: () => dispatch( fetchQuestionsIfNeeded() ),
-    setUserName: name => {
-      dispatch( setPlayerName(name) )
-      props.router.push('questions')
-    }
+    setPlayerName: name => dispatch( setPlayerName(name) ),
+    resetCurrentQuestionIndex: () => dispatch( setCurrentQuestionIndex(0) )
   }
 }
 

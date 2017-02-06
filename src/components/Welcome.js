@@ -1,19 +1,19 @@
 import React, { PropTypes } from 'react'
 
-const WelcomeContainer = ({ onNextClick }) => {
-  let nameInput
+const WelcomeContainer = ({ playerName, onPlayerNameChange, onNextClick }) => {
   return (
     <div>
       <h3>Welcome to the Float Cash Flow Quiz</h3>
       <form>
         <input
-          ref={ node => nameInput = node }
           type="text"
-          placeholder="Please enter your name" />
+          placeholder="Please enter your name"
+          value={ playerName }
+          onChange={ (ev) => onPlayerNameChange( ev.target.value ) }/>
         <button
           onClick={ (ev) => {
             ev.preventDefault()
-            onNextClick( nameInput.value )
+            onNextClick()
           }}
         >Next</button>
       </form>
@@ -22,6 +22,8 @@ const WelcomeContainer = ({ onNextClick }) => {
 }
 
 WelcomeContainer.propTypes = {
+  plyayerName: PropTypes.string,
+  onPlayerNameChange: PropTypes.func.isRequired,
   onNextClick: PropTypes.func.isRequired
 }
 
