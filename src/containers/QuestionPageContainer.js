@@ -31,9 +31,8 @@ class QuestionPageContainer extends React.Component {
   }
 
   render() {
-    const currentQuestion = this.props.currentQuestion
     let content = <p>loading...</p>
-    if ( currentQuestion ) {
+    if ( this.props.areQuestionsLoaded ) {
       content = (
         <Question
           questionData={ this.props.currentQuestion }
@@ -61,6 +60,7 @@ class QuestionPageContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    areQuestionsLoaded: selectors.getAreQuestionsLoaded(state),
     player_name: selectors.getPlayerName(state),
     currentQuestion: selectors.getCurrentQuestion(state),
     selectedAnswerIndex: selectors.getSelectedAnswerIndex(state),

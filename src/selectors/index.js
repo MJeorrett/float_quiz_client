@@ -1,25 +1,33 @@
 import { createSelector } from 'reselect'
 
-export const getGameState = state => state.game_state
+const getGameState = state => state.game_state
+const getQuestions = state => state.questions
 
-const getQuestions = state => state.questions.all
-export const getMaxScore = state => state.questions.max_score
+const getAllQuestions = state => getQuestions(state).all
+export const getMaxScore = state => getQuestions(state).max_score
 
-export const getPlayerName = state => getGameState(state).player_name
 const getCurrenQuestionIndex = state => getGameState(state).current_question_index
+export const getPlayerName = state => getGameState(state).player_name
 export const getTotalScore = state => getGameState(state).total_score
 export const getIsFinished = state => getGameState(state).is_finished
 export const getSelectedAnswerIndex = state => getGameState(state).selected_answer_index
 
+export const getAreQuestionsLoaded = createSelector(
+  [ getQuestions, getAllQuestions ],
+  ( questionsState, questions ) => {
+    return questions.length > 0 && !questionsState.is_fetching
+  }
+)
+
 const getLastQuestionIndex = createSelector(
-  [ getQuestions ],
+  [ getAllQuestions ],
   ( questions ) => {
     return questions.length - 1
   }
 )
 
 export const getCurrentQuestion = createSelector(
-  [ getQuestions, getCurrenQuestionIndex ],
+  [ getAllQuestions, getCurrenQuestionIndex ],
   ( questions, currentQuestionIndex ) => {
     return questions[currentQuestionIndex]
   }
