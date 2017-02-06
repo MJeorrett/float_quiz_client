@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { resetGameState } from '../redux/actions/game_state_actions'
+import * as selectors from '../selectors'
 
 class ResultsPageContainer extends React.Component {
 
@@ -27,9 +28,9 @@ class ResultsPageContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    playerName: state.game_state.player_name,
-    totalScore: state.game_state.total_score,
-    maxScore: state.questions.max_score
+    playerName: selectors.getPlayerName(state),
+    totalScore: selectors.getTotalScore(state),
+    maxScore: selectors.getMaxScore(state)
   }
 }
 const mapDispatchToProps = dispatch => {

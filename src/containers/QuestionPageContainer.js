@@ -8,6 +8,7 @@ import {
   nextQuestion,
   setIsFinished
 } from '../redux/actions/game_state_actions'
+import * as selectors from '../selectors'
 
 import Question from '../components/Question'
 
@@ -59,23 +60,13 @@ class QuestionPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const questions = state.questions.all
-  const currentQuestionIndex = state.game_state.current_question_index
-  const currentQuestion = questions[currentQuestionIndex]
-  const lastQuestionIndex = questions.length - 1
-  const selectedAnswerIndex = state.game_state.selected_answer_index
-  let selectedAnswerScore = null
-  if ( selectedAnswerIndex !== null) {
-    selectedAnswerScore = currentQuestion.answers[selectedAnswerIndex].score
-  }
-
   return {
-    player_name: state.game_state.player_name,
-    currentQuestion,
-    selectedAnswerIndex,
-    selectedAnswerScore,
-    totalScore: state.game_state.total_score,
-    onLastQuestion: currentQuestionIndex === lastQuestionIndex
+    player_name: selectors.getPlayerName(state),
+    currentQuestion: selectors.getCurrentQuestion(state),
+    selectedAnswerIndex: selectors.getSelectedAnswerIndex(state),
+    selectedAnswerScore: selectors.getSelectedAnswerScore(state),
+    totalScore: selectors.getTotalScore(state),
+    onLastQuestion: selectors.getOnLastQuestion(state)
   }
 }
 

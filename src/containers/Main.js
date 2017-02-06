@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { loadGameStateIfAny } from '../redux/actions/game_state_actions'
+import * as selectors from '../selectors'
 
 class Main extends React.Component {
 
@@ -28,7 +29,7 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isFinished: state.game_state.is_finished
+    isFinished: selectors.getIsFinished(state)
   }
 }
 const mapDispatchToProps = dispatch => {
