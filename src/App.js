@@ -7,9 +7,9 @@ import thunkMiddleware from 'redux-thunk'
 import root_reducer from './redux/reducers'
 
 import Main from './Main'
-import WelcomeContainer from './containers/WelcomeContainer'
-import QuestionContainer from './containers/QuestionContainer'
-import ResultsContainer from './containers/ResultsContainer'
+import WelcomePageContainer from './containers/WelcomePageContainer'
+import QuestionPageContainer from './containers/QuestionPageContainer'
+import ResultsPageContainer from './containers/ResultsPageContainer'
 import './App.css';
 
 const store = createStore(
@@ -25,9 +25,9 @@ class App extends Component {
       <Provider store={ store }>
         <Router history={ browserHistory }>
           <Route path="/" component={ Main }>
-            <IndexRoute component={ WelcomeContainer }/>
-            <Route path="questions" component={ QuestionContainer } />
-            <Route path="results" component={ ResultsContainer } />
+            <IndexRoute component={ WelcomePageContainer }/>
+            <Route path="questions" component={ QuestionPageContainer } />
+            <Route path="results" component={ ResultsPageContainer } />
           </Route>
         </Router>
       </Provider>

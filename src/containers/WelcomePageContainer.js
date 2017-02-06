@@ -6,7 +6,7 @@ import { setPlayerName } from '../redux/actions/game_state_actions'
 
 import Welcome from '../components/Welcome'
 
-class WelcomeContainer extends React.Component {
+class WelcomePageContainer extends React.Component {
 
   render() {
     return <Welcome onNextClick={ this.props.setUserName }/>
@@ -24,9 +24,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-WelcomeContainer = connect(
+WelcomePageContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(WelcomeContainer)
+)(WelcomePageContainer)
 
-export default WelcomeContainer
+export default WelcomePageContainer

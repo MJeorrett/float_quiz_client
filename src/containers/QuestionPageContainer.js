@@ -7,7 +7,7 @@ import { nextQuestion, setSelectedAnswerIndex } from '../redux/actions/game_stat
 
 import Question from '../components/Question'
 
-class QuestionContainer extends React.Component {
+class QuestionPageContainer extends React.Component {
 
   constructor() {
     super()
@@ -75,9 +75,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-QuestionContainer = connect(
+QuestionPageContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuestionContainer)
+)(QuestionPageContainer)
 
-export default QuestionContainer
+export default QuestionPageContainer
