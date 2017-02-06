@@ -69,11 +69,13 @@ describe('nextQuestion', () => {
     lsHelper.setItem( keys.PLAYER_NAME, "test name" )
     lsHelper.setItem( keys.CURRENT_QUESTION_INDEX, 13 )
     lsHelper.setItem( keys.TOTAL_SCORE, 45 )
+    lsHelper.setItem( keys.IS_FINISHED, true )
 
     const expectedActions = [
       { type: types.SET_PLAYER_NAME, payload: "test name" },
       { type: types.SET_CURRENT_QUESTION_INDEX, payload: 13 },
-      { type: types.SET_TOTAL_SCORE, payload: 45 }
+      { type: types.SET_TOTAL_SCORE, payload: 45 },
+      { type: types.SET_IS_FINISHED, payload: true }
     ]
 
     const store = mockStore({

@@ -62,11 +62,13 @@ export function loadGameStateIfAny() {
     const currentQuestionIndex =
       lsHelper.getItem( keys.CURRENT_QUESTION_INDEX )
     const totalScore = lsHelper.getItem( keys.TOTAL_SCORE )
+    const isFinished = lsHelper.getItem( keys.IS_FINISHED )
 
     if ( playerName ) dispatch( setPlayerName(playerName) )
     if ( currentQuestionIndex ) {
       dispatch( setCurrentQuestionIndex(currentQuestionIndex) )
     }
     if ( totalScore ) dispatch( setTotalScore(totalScore) )
+    if ( isFinished ) dispatch( setIsFinished(isFinished) )
   }
 }
