@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import root_reducer from './redux/reducers'
 
-import routes from './routes'
+import routes from './app_routes'
 import './App.css';
 
 const store = createStore(
