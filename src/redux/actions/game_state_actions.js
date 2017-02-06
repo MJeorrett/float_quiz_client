@@ -25,7 +25,7 @@ export function nextQuestion( name ) {
 }
 
 export function setTotalScore( score ) {
-  localStorage.setItem( keys.TOTAL_SCORE_KEY, score )
+  localStorage.setItem( keys.TOTAL_SCORE, score )
   return {
     type: types.SET_TOTAL_SCORE,
     payload: score
