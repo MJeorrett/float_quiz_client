@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 
-const Answer = ({ text, score, onSelect }) => {
+const Answer = ({ text, score, selected, onSelect }) => {
 
   return (
     <label className="radio-label">
       <input
       type="radio"
       name="answer"
+      checked={ selected }
       onClick={ (ev) => ev.target.checked ? onSelect() : null }
       />
     { text }

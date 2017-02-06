@@ -2,7 +2,7 @@ import React from 'react'
 
 import Answer from './Answer'
 
-const Question = ({ questionData, onAnswerSelect }) => {
+const Question = ({ questionData, selectedAnswerIndex, onAnswerSelect }) => {
 
   const answers = questionData.answers.map( (answerData, index) => {
     return (
@@ -10,6 +10,7 @@ const Question = ({ questionData, onAnswerSelect }) => {
         key={ index }
         text={ answerData.text }
         score={ answerData.score }
+        selected={ index === selectedAnswerIndex }
         onSelect={ () => onAnswerSelect(index) }/>
       )
   })

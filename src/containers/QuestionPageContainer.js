@@ -34,6 +34,7 @@ class QuestionPageContainer extends React.Component {
       content = (
         <Question
           questionData={ this.props.currentQuestion }
+          selectedAnswerIndex={ this.props.selectedAnswerIndex }
           onAnswerSelect={ this.props.setSelectedAnswerIndex }/>
       )
     }
