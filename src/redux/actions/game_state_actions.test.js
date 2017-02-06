@@ -73,4 +73,13 @@ describe('nextQuestion', () => {
     store.dispatch( loadGameStateIfAny() )
     expect( store.getActions() ).toEqual( expectedActions )
   })
+
+  it('should not send any actions if no state saved', () => {
+    localStorage.clear()
+    const store = mockStore({
+      game_state: {}
+    })
+    store.dispatch( loadGameStateIfAny() )
+    expect( store.getActions() ).toEqual( [] )
+  })
 })

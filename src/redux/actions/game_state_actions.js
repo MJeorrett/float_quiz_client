@@ -49,13 +49,13 @@ export function setSelectedAnswerIndex( index ) {
 export function loadGameStateIfAny() {
   return function( dispatch ) {
     const playerName = localStorage.getItem(keys.PLAYER_NAME)
-    if ( playerName ) {
-      const currentQuestionIndex =
-        localStorage.getItem( keys.CURRENT_QUESTION_INDEX )
-      const totalScore = localStorage.getItem( keys.TOTAL_SCORE )
-      dispatch( setPlayerName( playerName ) )
+    const currentQuestionIndex =
+      localStorage.getItem( keys.CURRENT_QUESTION_INDEX )
+    const totalScore = localStorage.getItem( keys.TOTAL_SCORE )
+    if ( playerName ) dispatch( setPlayerName( playerName ) )
+    if ( currentQuestionIndex ) {
       dispatch( setCurrentQuestionIndex( parseInt(currentQuestionIndex, 10) ) )
-      dispatch( setTotalScore( parseInt(totalScore, 10) ) )
     }
+    if ( totalScore ) dispatch( setTotalScore( parseInt(totalScore, 10) ) )
   }
 }
