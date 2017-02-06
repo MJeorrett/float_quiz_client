@@ -32,7 +32,7 @@ function fetchQuestions() {
 
 export function fetchQuestionsIfNeeded() {
   return function ( dispatch, getState ) {
-    if ( getState().questions.questions.length === 0 ) {
+    if ( getState().questions.all.length === 0 ) {
       return dispatch( fetchQuestions() )
     }
     else {

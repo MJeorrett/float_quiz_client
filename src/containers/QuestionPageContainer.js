@@ -59,7 +59,7 @@ class QuestionPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const questions = state.questions.questions
+  const questions = state.questions.all
   const currentQuestionIndex = state.game_state.current_question_index
   const currentQuestion = questions[currentQuestionIndex]
   const lastQuestionIndex = questions.length - 1

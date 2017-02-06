@@ -50,7 +50,7 @@ describe('fetchQuestionsIfNeeded', () => {
     ]
     setUpNock( questionsData )
     const store = mockStore({
-      questions: { questions: [] }
+      questions: { all: [] }
     })
     return store.dispatch( fetchQuestionsIfNeeded() )
       .then( () => {
@@ -62,7 +62,7 @@ describe('fetchQuestionsIfNeeded', () => {
     const expectedActions = []
     const questionsApi = setUpNock({})
     const store = mockStore({
-      questions: { questions: questionsData }
+      questions: { all: questionsData }
     })
     return store.dispatch( fetchQuestionsIfNeeded() )
       .then( () => {
