@@ -59,7 +59,7 @@ class QuestionPageContainer extends React.Component {
 
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     player_name: selectors.getPlayerName(state),
     currentQuestion: selectors.getCurrentQuestion(state),
