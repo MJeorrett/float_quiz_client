@@ -5,6 +5,7 @@ const apiKey = env.REACT_APP_API_KEY
 const apiUrl = env.REACT_APP_API_URL + '?access_token=' + apiKey
 
 const config = {
+  api_key: apiKey,
   api_url: apiUrl
 }
 
