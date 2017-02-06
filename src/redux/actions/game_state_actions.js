@@ -13,9 +13,9 @@ export function nextQuestion( name ) {
   }
 }
 
-export function setSelectedAnswerScore( score ) {
+export function setSelectedAnswerIndex( index ) {
   return {
-    type: types.SET_SELECTED_ANSWER_SCORE,
-    payload: score
+    type: types.SET_SELECTED_ANSWER_INDEX,
+    payload: index
   }
 }
