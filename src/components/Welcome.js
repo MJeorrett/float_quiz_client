@@ -4,18 +4,19 @@ const WelcomeContainer = ({ playerName, onPlayerNameChange, onNextClick }) => {
   return (
     <div>
       <h3>Welcome to the Float Cash Flow Quiz</h3>
-      <form>
+      <form id="name-form">
         <input
           type="text"
-          placeholder="Please enter your name"
+          placeholder="Enter your name"
           value={ playerName }
           onChange={ (ev) => onPlayerNameChange( ev.target.value ) }/>
         <button
+          className="start-btn"
           onClick={ (ev) => {
             ev.preventDefault()
             onNextClick()
           }}
-        >Next</button>
+        >Start</button>
       </form>
     </div>
   )

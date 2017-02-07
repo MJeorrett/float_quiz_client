@@ -17,7 +17,7 @@ const Question = ({ questionData, selectedAnswerIndex, onAnswerSelect }) => {
 
   return (
     <div>
-      <p>{ questionData.text }</p>
+      <h3>{ questionData.text }</h3>
       <hr />
       <form>
         <div>{ answers }</div>

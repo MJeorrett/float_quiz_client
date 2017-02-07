@@ -19,10 +19,14 @@ class WelcomePageContainer extends React.Component {
   }
 
   render() {
-    return <Welcome
-      playerName={ this.props.playerName }
-      onPlayerNameChange={ this.props.setPlayerName }
-      onNextClick={ this.handleNextClicked }/>
+    return (
+      <div className='content'>
+        <Welcome
+          playerName={ this.props.playerName }
+          onPlayerNameChange={ this.props.setPlayerName }
+          onNextClick={ this.handleNextClicked }/>
+      </div>
+    )
   }
 
 }

@@ -43,15 +43,17 @@ class QuestionPageContainer extends React.Component {
 
     return (
       <div>
-        <p>taking the quiz as {this.props.player_name}</p>
-        { content }
-        <hr />
-        <button
-          onClick={ this.handleNextClicked }
-          disabled={ this.props.selectedAnswerIndex === null }>
-          Next
-        </button>
-        <p>Current score:{this.props.totalScore}</p>
+        <div className="content">
+          { content }
+        </div>
+        <nav>
+          <button
+            onClick={ this.handleNextClicked }
+            disabled={ this.props.selectedAnswerIndex === null }>
+            Next
+          </button>
+          <h3>Current score: {this.props.totalScore}</h3>
+        </nav>
       </div>
     )
   }

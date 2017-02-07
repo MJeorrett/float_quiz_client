@@ -14,12 +14,16 @@ class ResultsPageContainer extends React.Component {
   render() {
     return (
       <div>
-        <p>Thank you {this.props.playerName}</p>
-        <p>You scored {this.props.totalScore} out of a possible {this.props.maxScore}</p>
-        <button
-          onClick={ this.handleTryAgainClick }>
-          Try Again
-        </button>
+        <div className="content">
+          <h3>Thank you {this.props.playerName}!</h3>
+          <h3>You scored {this.props.totalScore} out of a possible {this.props.maxScore}</h3>
+        </div>
+        <nav>
+          <button
+            onClick={ this.handleTryAgainClick }>
+            Try Again
+          </button>
+        </nav>
       </div>
     )
   }

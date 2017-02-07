@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 const Answer = ({ text, score, selected, onSelect }) => {
 
   return (
-    <label className="radio-label">
+    <label className="answer">
       <input
       type="radio"
       name="answer"
