@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import { setPlayerName, setCurrentQuestionIndex } from '../redux/actions/game_state_actions'
-import { getPlayerName } from '../selectors'
+import { getPlayerName, getPlayerNameIsValid } from '../selectors'
 
 import Welcome from '../components/Welcome'
 
@@ -24,7 +24,8 @@ class WelcomePageContainer extends React.Component {
         <Welcome
           playerName={ this.props.playerName }
           onPlayerNameChange={ this.props.setPlayerName }
-          onNextClick={ this.handleNextClicked }/>
+          onNextClick={ this.handleNextClicked }
+          startEnabled={ this.props.playerNameIsValid }/>
       </div>
     )
   }
@@ -32,7 +33,10 @@ class WelcomePageContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { playerName: getPlayerName(state) }
+  return {
+    playerName: getPlayerName(state),
+    playerNameIsValid: getPlayerNameIsValid(state)
+  }
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {

@@ -12,6 +12,11 @@ export const getTotalScore = state => getGameState(state).total_score
 export const getIsFinished = state => getGameState(state).is_finished
 export const getSelectedAnswerIndex = state => getGameState(state).selected_answer_index
 
+export const getPlayerNameIsValid = createSelector(
+  [ getPlayerName ],
+  playerName => playerName.length >= 2
+)
+
 export const getAreQuestionsLoaded = createSelector(
   [ getQuestions, getAllQuestions ],
   ( questionsState, questions ) => {

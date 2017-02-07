@@ -81,7 +81,7 @@ button.start-btn {
   border-color: #009900;
 }
 
-button.start-btn:hover {
+button.start-btn:hover:enabled {
   background-color: #b3ffb3;
 }
 
@@ -92,6 +92,11 @@ button:hover:enabled {
 button:disabled {
   color: #b9b9c6;
   border-color: #b9b9c6;
+}
+
+button.start-btn:disabled {
+  color: #a3c2a3;
+  border-color: #a3c2a3;
 }
 
 div.main-container {

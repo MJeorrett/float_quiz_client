@@ -1,6 +1,11 @@
 import React, { PropTypes } from 'react'
 
-const WelcomeContainer = ({ playerName, onPlayerNameChange, onNextClick }) => {
+const WelcomeContainer = ({
+  playerName,
+  startEnabled,
+  onPlayerNameChange,
+  onNextClick
+}) => {
   return (
     <div>
       <h3>Welcome to the Float Cash Flow Quiz</h3>
@@ -12,6 +17,7 @@ const WelcomeContainer = ({ playerName, onPlayerNameChange, onNextClick }) => {
           onChange={ (ev) => onPlayerNameChange( ev.target.value ) }/>
         <button
           className="start-btn"
+          disabled={ !startEnabled }
           onClick={ (ev) => {
             ev.preventDefault()
             onNextClick()
