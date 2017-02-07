@@ -61,7 +61,7 @@ input[type="radio"] {
 
 label {
   font-size: 30px;
-  text-align: left;
+  text-align: center;
 }
 
 input:hover, input:focus {
