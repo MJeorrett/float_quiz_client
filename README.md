@@ -7,7 +7,7 @@ The app is hosted and can be played at https://arcane-harbor-35765.herokuapp.com
 Note: these instructions assume that you have node and npm installed on your machine already.
 
 To install the app locally:
-- Follow the instructions for downloading and starting the float_quiz_api
+- Follow the instructions for locally installing and starting the api which can be found at https://github.com/MJeorrett/float_quiz_api
 - Clone this repo
 - Move into the created directory
 - run `npm install`
