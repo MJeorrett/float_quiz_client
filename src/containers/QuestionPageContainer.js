@@ -52,7 +52,9 @@ class QuestionPageContainer extends React.Component {
             disabled={ this.props.selectedAnswerIndex === null }>
             Next
           </button>
-          <h3>Current score: {this.props.totalScore}</h3>
+          <h3 id="current-score">
+              Current score: {this.props.totalScore}
+          </h3>
         </nav>
       </div>
     )
