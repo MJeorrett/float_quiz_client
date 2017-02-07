@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import {
   setSelectedAnswerIndex,
   incrementTotalScore,
@@ -13,10 +12,6 @@ import * as selectors from '../selectors'
 import Question from '../components/Question'
 
 class QuestionPageContainer extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchQuestions()
-  }
 
   handleNextClicked = () => {
     this.props.incrementTotalScore( this.props.selectedAnswerScore )
@@ -76,7 +71,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchQuestions: () => dispatch( fetchQuestionsIfNeeded() ),
     setSelectedAnswerIndex: index => dispatch( setSelectedAnswerIndex(index) ),
     incrementTotalScore: score => dispatch( incrementTotalScore(score) ),
     nextQuestion: () => dispatch( nextQuestion() ),

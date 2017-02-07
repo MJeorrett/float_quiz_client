@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { fetchQuestionsIfNeeded } from '../redux/actions/questions_actions'
 import { loadGameStateIfAny } from '../redux/actions/game_state_actions'
 import * as selectors from '../selectors'
 
@@ -8,6 +9,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.loadGameState()
+    this.props.fetchQuestions()
   }
 
   componentWillReceiveProps( newProps ) {
@@ -38,7 +40,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    loadGameState: () => dispatch( loadGameStateIfAny() )
+    loadGameState: () => dispatch( loadGameStateIfAny() ),
+    fetchQuestions: () => dispatch( fetchQuestionsIfNeeded() )
   }
 }
 
