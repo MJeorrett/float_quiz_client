@@ -3,7 +3,7 @@ This is the client for the float_quiz_api. It is written in React and uses Redux
 
 The app is hosted and can be played at https://arcane-harbor-35765.herokuapp.com/
 
-# Local Installation instructions
+## Local Installation instructions
 Note: these instructions assume that you have node and npm installed on your machine already.
 
 To install the app locally:
